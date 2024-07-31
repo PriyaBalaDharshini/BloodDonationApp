@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const donorSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: true },
     address: { type: String, required: true },
     mobile: { type: Number, required: true },
     bloodgroup: { type: String, required: true },
