@@ -38,22 +38,25 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
     try {
-        const { email, pasword } = req.body;
+        const { email, password } = req.body; // Corrected typo here
+
         const user = await userModel.findOne({ email });
         if (!user) {
-            return res.status(400).json({ message: "Email does not exist. PLease register" })
+            return res.status(400).json({ message: "Email does not exist. Please register" });
         }
-        const comparePassword = await bcrypt.compare(pasword, user.password)
+
+        const comparePassword = await bcrypt.compare(password, user.password); // Using the correct variable name
 
         if (!comparePassword) {
-            return res.status(400).json({ message: "Incorrect password" })
+            return res.status(400).json({ message: "Incorrect password" });
         }
-        const { password, ...info } = user._doc
+
+        const { password: _, ...info } = user._doc; 
         const accessToken = jwt.sign(
             { id: user._id, role: user.role },
             process.env.JWT_SEC,
             { expiresIn: "1d" }
-        )
+        );
 
         res.status(200).json({ message: "Login successful.", ...info, accessToken });
 
@@ -62,5 +65,6 @@ const loginUser = async (req, res) => {
         res.status(500).json({ message: "Internal Server Error", error });
     }
 }
+
 
 export default { registerUser, loginUser }
