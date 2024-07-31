@@ -4,6 +4,7 @@ import cors from "cors"
 import dbConnection from "./utils/db.js";
 import authRoutes from "./routes/authRoutes.js"
 import donorRoutes from "./routes/donorRoutes.js"
+import prospectRoutes from "./routes/prospectRoutes.js"
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json())
 
 app.use("/auth", authRoutes)
 app.use("/donor", donorRoutes)
+app.use("/prospect", prospectRoutes)
 
 
 app.listen(port, () => {

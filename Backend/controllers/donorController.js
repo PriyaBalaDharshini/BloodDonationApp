@@ -96,7 +96,7 @@ const deleteDonor = async (req, res) => {
     }
 }
 
-const donorstatistics = async (req, res) => {
+const donorStatistics = async (req, res) => {
     try {
         const statistics = await donorModel.aggregate([
             {
@@ -115,4 +115,4 @@ const donorstatistics = async (req, res) => {
 }
 
 
-export default { createDonor, getAllDonors, getOneDonor, updateDonor, deleteDonor, donorstatistics }
+export default { createDonor, getAllDonors, getOneDonor, updateDonor, deleteDonor, donorStatistics }
