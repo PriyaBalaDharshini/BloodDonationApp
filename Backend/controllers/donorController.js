@@ -96,5 +96,23 @@ const deleteDonor = async (req, res) => {
     }
 }
 
+const donorstatistics = async (req, res) => {
+    try {
+        const statistics = await donorModel.aggregate([
+            {
+                $group: {
+                    _id: "$bloodgroup",
+                    count: { $sum: 1 }
+                }
+            }
+        ])
+        res.status(200).json(statistics)
 
-export default { createDonor, getAllDonors, getOneDonor, updateDonor, deleteDonor }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error", error });
+    }
+}
+
+
+export default { createDonor, getAllDonors, getOneDonor, updateDonor, deleteDonor, donorstatistics }
