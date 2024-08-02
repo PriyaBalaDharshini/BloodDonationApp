@@ -10,7 +10,8 @@ const donorSchema = new mongoose.Schema({
     age: { type: Number, required: true },
     healthissues: { type: String },
     bp: { type: String },
-    status: { type: Number, default: 0 }
+    status: { type: Number, default: 0 },
+    data: { type: Date, default: Date.now }
 })
 
 const donorModel = mongoose.model("Donor", donorSchema)
