@@ -12,10 +12,11 @@ let configurations = {
     service: "gmail",
     host: "smtp.gmail.com",
     port: 587,
-    requireTLS: true,
+    /* requireTLS: true, */
+    secure: false, // true for 465, false for other ports
     auth: {
         user: process.env.EMAIL,
-        password: process.env.PASSWORD,
+        pass: process.env.PASSWORD,
     }
 }
 
