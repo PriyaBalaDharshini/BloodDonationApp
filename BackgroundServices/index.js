@@ -13,11 +13,11 @@ const port = process.env.PORT;
 
 //Schedule Task
 const run = () => {
-    cron.schedule('* * * * * *', () => {
+    cron.schedule('* * * * *', () => {
         sendDetailsProspectEmail()
         sendEligibilityEmail()
         sendBloodDonationEmail()
-        //sendDonorDetailsEmail(); 
+        sendDonorDetailsEmail();
     });
 }
 run()

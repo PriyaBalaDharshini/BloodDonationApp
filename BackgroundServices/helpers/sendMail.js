@@ -15,7 +15,7 @@ let configurations = {
     requireTLS: true,
     auth: {
         user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
+        pass: process.env.PASS,
     }
 }
 
